@@ -7,4 +7,4 @@
 ```npm install -g sass```
 * Изменить файл css/sass.css
 * В папке css выполнить
-```sass sass.css css.css```
+```sass css.sass css.css```
