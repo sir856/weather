@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="css/css.css"/>
+    <title>Лаба 1</title>
+</head>
+
+<body>
+	<form>
+		 <input id="city" type="text" placeholder="Введите название города..."/>
+		 <button type="button" onclick="search()"></button>
+	</form>
+	
+	<div id="container" class="container">
+		
+	</div>
+
+	<template id="entry-template">
+	  <ul>
+		  <li><span>Температура</span> <em>{{main.temp}} &degС</em></li>
+		  <li><span>Давление</span> <em>{{main.pressure}} гПа</em></li>
+		  <li><span>Влажность</span> <em>{{main.humidity}} %</em></li>
+		  <li><span>Скорость ветра</span> <em>{{wind.speed}} м/c</em></li>
+		  <li><span>Описание</span> <em>{{#weather}}{{description}}{{/weather}}</em></li>
+	  </ul>
+	</template>
+    
+	<script src="libs/handlebars-v4.4.0.js"> </script>
+	<script src="libs/axios.min.js"></script>
+	<script src="js/script.js"> </script>
+</body>
+
+</html>

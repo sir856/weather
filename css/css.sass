@@ -1,0 +1,47 @@
+$border: 1px solid #1e90ff
+$rad: 15px
+$width: 400px
+$margin: 0 auto
+$btn-sz: 42px
+
+form
+	width: $width
+	margin: $margin
+	display: flex
+
+input
+	width: 100%
+	padding-left: 10px
+	border: $border
+	border-radius: $rad 0 0 $rad
+	outline: none
+	color: #000099
+	
+button
+	width: $btn-sz
+	height: $btn-sz
+	border: none
+	background: #1e90ff url("../resources/search.png") no-repeat center
+	background-size: 20px
+	border-radius: 0 $rad $rad 0
+	cursor: pointer
+
+.container
+	margin: $margin
+	margin-top: 20px
+	width: $width
+	text-align: center
+
+ul
+	padding: 10px
+	border: $border
+	border-radius: $rad
+	list-style-type: none
+
+li
+	display: flex
+	justify-content: space-between
+	margin-bottom: 5px
+
+span
+	color: #000099
