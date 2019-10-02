@@ -39,9 +39,9 @@ function showError(response) {
 
     if (response) {
         if (response.status === 404) {
-            container.innerText = "Город не найден"
+            error = "Город не найден"
         } else {
-            container.innerText = "Проблемы с сервером"
+            error = "Проблемы с сервером"
         }
     }
 
