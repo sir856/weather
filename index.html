@@ -7,9 +7,9 @@
 </head>
 
 <body>
-	<form>
-		 <input id="city" type="text" placeholder="Введите название города..."/>
-		 <button type="button" onclick="search()"></button>
+	<form id="search">
+		 <input name="city" type="text" placeholder="Введите название города..."/>
+		 <button type="submit"></button>
 	</form>
 	
 	<div id="container" class="container">
@@ -24,6 +24,10 @@
 		  <li><span>Скорость ветра</span> <em>{{wind.speed}} м/c</em></li>
 		  <li><span>Описание</span> <em>{{#weather}}{{description}}{{/weather}}</em></li>
 	  </ul>
+	</template>
+
+	<template id="error-template">
+		<p>{{error}}</p>
 	</template>
     
 	<script src="libs/handlebars-v4.4.0.js"> </script>

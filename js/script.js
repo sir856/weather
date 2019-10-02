@@ -1,6 +1,10 @@
-function search() {
-    let city = document.getElementById("city").value;
+document.getElementById('search').addEventListener("submit", e => {
+    search(e.target['city'].value);
 
+    e.preventDefault();
+});
+
+function search(city) {
     axios.get("http://api.openweathermap.org/data/2.5/weather", {
         params: {
             q: city,
@@ -30,14 +34,22 @@ function show(data) {
 
 function showError(response) {
     let container = document.getElementsByClassName("container")[0];
+
+    let error = "Проблемы с интернет соединением";
+
     if (response) {
         if (response.status === 404) {
             container.innerText = "Город не найден"
         } else {
             container.innerText = "Проблемы с сервером"
         }
-    } else {
-        container.innerText = "Проблемы с интернет соединением"
     }
+
+    let source = document.getElementById("error-template").innerHTML;
+    let template = Handlebars.compile(source);
+    let data = { "error": error };
+
+
+    container.innerHTML = template(data);
 
 }
