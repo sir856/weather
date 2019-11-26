@@ -1,0 +1,32 @@
+{
+  "name": "lab1",
+  "version": "1.0.0",
+  "description": "Скопировать файлы и запустить index.html\r ## Изменение стилей с помощью Sass\r * Установить Node.js\r * Выполнить в консоли \r ```npm install -g sass```\r * Изменить файл css/sass.css\r * В папке css выполнить\r ```sass css.sass css.css```",
+  "main": "index.js",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "mocha": "^2.5.3"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "Ilfat",
+  "license": "ISC",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "jsdom": "^15.2.1",
+    "sinon": "^7.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sir856/weather.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sir856/weather/issues"
+  },
+  "homepage": "https://github.com/sir856/weather#readme"
+}

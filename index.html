@@ -13,7 +13,6 @@
 	</form>
 	
 	<div id="container" class="container">
-		
 	</div>
 
 	<template id="entry-template">
@@ -21,7 +20,7 @@
 		  <li><span>Температура</span> <em>{{main.temp}} &degС</em></li>
 		  <li><span>Давление</span> <em>{{main.pressure}} гПа</em></li>
 		  <li><span>Влажность</span> <em>{{main.humidity}} %</em></li>
-		  <li><span>Скорость ветра</span> <em>{{wind.speed}} м/c</em></li>
+		  <li><span>Скорость ветра</span> <em>{{wind.speed}} м/с</em></li>
 		  <li><span>Описание</span> <em>{{#weather}}{{description}}{{/weather}}</em></li>
 	  </ul>
 	</template>
@@ -32,6 +31,7 @@
     
 	<script src="libs/handlebars-v4.4.0.js"> </script>
 	<script src="libs/axios.min.js"></script>
+	<script src="js/form.js"> </script>
 	<script src="js/script.js"> </script>
 </body>
 

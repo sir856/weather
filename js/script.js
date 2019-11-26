@@ -1,11 +1,5 @@
-document.getElementById('search').addEventListener("submit", e => {
-    search(e.target['city'].value);
-
-    e.preventDefault();
-});
-
-function search(city) {
-    axios.get("http://api.openweathermap.org/data/2.5/weather", {
+function search(city, axios) {
+    return axios.get("http://api.openweathermap.org/data/2.5/weather", {
         params: {
             q: city,
             lang: "ru",
@@ -16,24 +10,24 @@ function search(city) {
         timeout: 1000
     })
         .then(response => {
-            show(response.data)
+            show.call(this, response.data)
         })
         .catch(error => {
-            showError(error.response);
+            showError.call(this, error.response);
         });
 }
 
 function show(data) {
-    let container = document.getElementsByClassName("container")[0];
+    let container = this.document.getElementsByClassName("container")[0];
 
-    let source = document.getElementById("entry-template").innerHTML;
-    var template = Handlebars.compile(source);
+    let source = this.document.getElementById("entry-template").innerHTML;
+    let template = Handlebars.compile(source);
 
     container.innerHTML = template(data);
 }
 
 function showError(response) {
-    let container = document.getElementsByClassName("container")[0];
+    let container = this.document.getElementsByClassName("container")[0];
 
     let error = "Проблемы с интернет соединением";
 
@@ -45,7 +39,7 @@ function showError(response) {
         }
     }
 
-    let source = document.getElementById("error-template").innerHTML;
+    let source = this.document.getElementById("error-template").innerHTML;
     let template = Handlebars.compile(source);
     let data = { "error": error };
 
@@ -53,3 +47,5 @@ function showError(response) {
     container.innerHTML = template(data);
 
 }
+
+module.exports = {search, show, showError};
