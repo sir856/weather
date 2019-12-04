@@ -1,6 +1,2 @@
-document.getElementById('search').addEventListener("submit", e => {
-    search(e.target['city'].value, axios);
+setListener(search);
 
-
-    e.preventDefault();
-});

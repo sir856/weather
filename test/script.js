@@ -1,14 +1,14 @@
 const mocha = require('mocha');
 const chai = require('chai');
-const {show, showError, search} = require('../js/script');
+const {show, showError, search, setListener} = require('../js/script');
 const {JSDOM} = require('jsdom');
-const {spy} = require('sinon');
 Handlebars = require('../libs/handlebars-v4.4.0');
-
-let window;
-
+const sinon = require('sinon');
 const expect = chai.expect;
 const assert = chai.assert;
+
+let dom;
+let window;
 
 let data = {
     "coord": {
@@ -59,8 +59,9 @@ describe('Test functions', () => {
         const options = {
             contentType: 'text/html',
         };
-        return JSDOM.fromFile("index.html", options).then((dom) => {
-            window = dom.window;
+        return JSDOM.fromFile("index.html", options).then((x) => {
+            dom = x;
+            window = x.window;
             // console.log(domFile.window.document.getElementById("container"));
         });
     });
@@ -145,6 +146,20 @@ describe('Test functions', () => {
             });
 
         });
+    });
+
+    describe('button', () => {
+        it('click', () => {
+            let callback = sinon.spy();
+            setListener.call(window, callback);
+
+            let input = window.document.getElementById("search").querySelector("input");
+            input.value = "value";
+            console.log(window.document.getElementById("search").innerHTML);
+            window.document.getElementById("search").querySelector("button").click();
+
+            assert(callback.calledOnce);
+        })
     })
 
 

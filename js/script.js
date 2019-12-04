@@ -1,3 +1,10 @@
+function setListener(search) {
+    this.document.getElementById('search').addEventListener("submit", e => {
+        search(e.target['city'].value, axios);
+
+        e.preventDefault();
+    });}
+
 function search(city, axios) {
     return axios.get("http://api.openweathermap.org/data/2.5/weather", {
         params: {
@@ -45,7 +52,8 @@ function showError(response) {
 
 
     container.innerHTML = template(data);
-
 }
 
-module.exports = {search, show, showError};
+
+
+module.exports = {search, show, showError, setListener};
