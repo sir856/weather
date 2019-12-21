@@ -5,7 +5,8 @@ const {JSDOM} = require('jsdom');
 Handlebars = require('../libs/handlebars-v4.4.0');
 const sinon = require('sinon');
 const expect = chai.expect;
-const assert = chai.assert;
+const {assert} = require('chai');
+
 
 let dom;
 let window;
@@ -62,7 +63,6 @@ describe('Test functions', () => {
         return JSDOM.fromFile("index.html", options).then((x) => {
             dom = x;
             window = x.window;
-            // console.log(domFile.window.document.getElementById("container"));
         });
     });
 
@@ -124,9 +124,15 @@ describe('Test functions', () => {
                 }
             };
 
-            await search.call(window, "", axios);
+            let response = sinon.spy();
+            let error = sinon.spy();
 
-            assert(window.document.getElementById("container").querySelector("ul") !== null);
+            await search.call(window, "", axios, response, error);
+
+            assert(response.calledOnce);
+            assert(!error.called);
+            expect(response.getCall(0).args[0]).equal(data);
+
         });
 
         it('error', async () => {
@@ -141,26 +147,17 @@ describe('Test functions', () => {
                 }
             };
 
-            await search.call(window, "", axios).then(() => {
-                assert(window.document.getElementById("container").querySelector("p") !== null);
-            });
+            let response = sinon.spy();
+            let error = sinon.spy();
+
+            await search.call(window, "", axios, response, error);
+
+            assert(error.calledOnce);
+            assert(!response.called);
+            expect(error.getCall(0).args[0].status).equal(400);
 
         });
     });
-
-    describe('button', () => {
-        it('click', () => {
-            let callback = sinon.spy();
-            setListener.call(window, callback);
-
-            let input = window.document.getElementById("search").querySelector("input");
-            input.value = "value";
-            console.log(window.document.getElementById("search").innerHTML);
-            window.document.getElementById("search").querySelector("button").click();
-
-            assert(callback.calledOnce);
-        })
-    })
 
 
 });

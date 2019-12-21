@@ -1,11 +1,12 @@
 function setListener(search) {
     this.document.getElementById('search').addEventListener("submit", e => {
+        let value = e.target['city'].value;
         search(e.target['city'].value, axios);
 
         e.preventDefault();
     });}
 
-function search(city, axios) {
+function search(city, axios, show, showError) {
     return axios.get("http://api.openweathermap.org/data/2.5/weather", {
         params: {
             q: city,
