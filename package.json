@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "enzyme": "^3.10.0",
-    "jsdom": "^15.2.1",
+    "jsdom": "^16.5.0",
     "sinon": "^7.5.0"
   },
   "repository": {
